@@ -37,7 +37,11 @@ for obj in nasdaqList:
     url = "https://finance.yahoo.com/quote/{}?p={}"
     url = url.format(obj.ticker,obj.ticker)
     soup = BeautifulSoup(requests.get(url).content,features="lxml")
-    obj.buyRating = soup.find("div",attrs={'class':"Fw(b) Fl(end)--m Fz(s) C($primaryColor"}).text
+    Val = soup.find("div",attrs={'class':"Fw(b) Fl(end)--m Fz(s) C($primaryColor"})
+    if Val:
+        obj.buyRating = Val.txt
+    else: 
+        obj.buyRating = "No Text"
     print(obj.buyRating)
 nasdaq.close
 #while True:
